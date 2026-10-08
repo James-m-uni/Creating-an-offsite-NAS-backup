@@ -54,4 +54,4 @@ you have chosen.
 
 I have chosen a 2TB Seagate hard drive to be used in my HP as I wanted to have a larger amount of storage for the price. Since this computer
 will mostly only be holding backups the read/write speed was less of a concern. Even if I had gone with an SSD for this, the network connection
-would have become saturated long before the read/write max speed of the SSD was hit.
+would have become saturated long before the read/write max speed of the SSD was hit. 
