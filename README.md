@@ -54,4 +54,28 @@ you have chosen.
 
 I have chosen a 2TB Seagate hard drive to be used in my HP as I wanted to have a larger amount of storage for the price. Since this computer
 will mostly only be holding backups the read/write speed was less of a concern. Even if I had gone with an SSD for this, the network connection
-would have become saturated long before the read/write max speed of the SSD was hit. 
+would have become saturated long before the read/write max speed of the SSD was hit. The main operating system is stored on a 240gb SSD.
+
+If using a sata hard drive with a raspberry PI, you will need to buy a usb to sata adapter. 3.5inch hard drives require more power
+especially during start up so you will want an adapted that has its own power supply as well.
+
+Newer Raspberry PIs support the use of NVMe through the use of a HAT.
+
+## Network considerations
+Having a stable, semi-fast internet connection is essential especially for file transfers. The network at the backup site is slower than my main internet
+connection (Backup site: ~70mbps download ~16mbps upload vs Main site: ~300mbps download ~30mbps upload) however is still plenty fast enough to support this server.
+
+
+# Initial setup
+First we need to install the operating system. In my case, I am using <a href="https://linuxmint.com">Linux mint</a>.
+The easiest way to install this is to download the iso file of the version you want. To image the file to a USB drive
+so you can boot into the USB for install, you can use a tool such as <a href="https://rufus.ie/en/">Rufus</a> which allows for creation of
+bootable USB images from an ISO file.
+
+Once that is done, you can boot into your new flash drive and begin install. The key you may need to press at the BIOS will be different depending on
+the computer manufacturer. In my case, I have to press the ESC key.
+
+<b>The initial OS setup for Raspberry PI is different. You have to use the <a href="https://www.raspberrypi.com/software/">Raspberry Pi imager</a> software to put the
+OS image onto an SD card to boot to.</b>
+
+
