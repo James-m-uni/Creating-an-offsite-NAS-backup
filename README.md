@@ -117,6 +117,31 @@ The password will be the same as if you were logging onto your server normally t
 
 Once connected, type ```lsblk``` and identify the drive. In my case, the drive is ```/dev/sdb```.
 
+You can double check that you have the right drive by doing ```sudo fdisk -l```.
+
+Then enter the fdisk utility through ```sudo fdisk /dev/sdb``` replacing <b>/dev/sdb</b> with your storage device location.
+
+The next thing is to delete the partitions. Type ```d``` into the prompt repeatedly until all partitions are deleted.
+
+You can now create your new partitions. In my case I am creating two partitions (one of size 800gb and 1tb).
+
+For me, I typed >>> ```n``` > ```1``` > Enter key for default first sector > ```+800G``` 
+
+For the second 1tb partition >>> ```n``` > ```2``` > Enter key for default first sector > Enter for default last sector (meaning the rest of the drive)
+
+To write these new changes to the disk, type ```w``` 
+
+<b>YOU MUST ENSURE THAT YOU HAVE FORMATTED THE CORRECT DRIVE BEFORE WRITING AS THIS STEP CANNOT BE UNDONE</b>
+
+## Install and setup samba
+Samba allows linux machines to share drives and services (such as printers) over a network. We first need to install it.
+
+Return back to the command line through Ctrl+C.
+
+Type ```sudo apt install samba``` to install samba.
+
+
+
 
 
 
