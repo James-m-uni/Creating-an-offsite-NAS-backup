@@ -78,4 +78,19 @@ the computer manufacturer. In my case, I have to press the ESC key.
 <b>The initial OS setup for Raspberry PI is different. You have to use the <a href="https://www.raspberrypi.com/software/">Raspberry Pi imager</a> software to put the
 OS image onto an SD card to boot to.</b>
 
+## After loading the operating system
+Make sure to turn off any sleep settings that may cause the computer to sleep after a certain amount of time or ones that
+may spin down any connected drives after a period of inactivity.
+
+Some operating systems do not come preinstalled with ssh (allows you to control the computer from the command line remotely). this is a 
+useful feature for when we have to control the computer remotely. For a setup like this, a remote desktop solution like xrdp has a slow
+response time.
+
+If you need to install ssh on a linux machine, enter this into the command line: ```sudo apt install ssh```
+
+To check that our hard drive is detected by the machine, you can type: ```lsblk``` and look for a storage device
+where the space matches the storage size of the storage drive you put in the machine.
+
+
+
 
