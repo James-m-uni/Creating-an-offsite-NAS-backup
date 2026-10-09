@@ -1,11 +1,11 @@
 # Creating an offsite network backup server for your home NAS
-Having a backup of your data is important for any person - not just buisnesses.
+Having a backup of your data is important for any person - not just businesses.
 Many people get caught out by not having a backup when they need it most even if most think
 they don't need one.
 
 You don't need fancy equipment to create your own offsite backup, even older computers will work.
 
-For my setup I have used an older HP Compaq desktop and that is what this tutorial will be based around.
+For my setup I have used an older HP Compaq desktop running linux mint and that is what this tutorial will be based around.
 
 There is an easy way to connect your backup server to your home LAN without dangerous port forwarding.
 
@@ -90,6 +90,32 @@ If you need to install ssh on a linux machine, enter this into the command line:
 
 To check that our hard drive is detected by the machine, you can type: ```lsblk``` and look for a storage device
 where the space matches the storage size of the storage drive you put in the machine.
+
+## Setting up tailscale 
+Now we need to create an account on tailscale which will allow us to connect computers on different LANs together. 
+A free account will allow for up to 6 devices which is more than enough for this setup. go to <a href="https://tailscale.com/">Tailscale</a> and create
+your account.
+
+After creating your account. You will be able to see a dashboard which lists which machines are connected to your tailscale network.
+The best place to start is by connecting your new server to the tailscale network. To do this, press on the add machine button, select server then copy the code.
+
+Enter the code you have copied into the terminal on your new server. After execution has finished, you will see a new machine show up
+in the tailscale list.
+
+From your home computer, you can download tailscale and set your computer up as a client machine through the same process. Once this is done, you can
+access your server remotely through the ip displayed on tailscale.
+
+## Partitioning your hard drive
+Before partitioning the hard drive, you need to understand what different uses your server will have. In my case, I am hosting an Unreal engine
+development server along with self-hosted network storage. I will need 800GB of storage for this use. I also need 1tb of storage as the backup for my home NAS.
+
+If you have bought a used drive, sometimes they will be formatted to a different file system. To format the drive, we first need to identify which drive it is.
+
+Connect to your remote server by typing in: ```ssh TAILSCALE_SERVER_IP```, replacing <b>TAILSCALE_SERVER_IP</b> with the ip address shown in the machines list on tailscale.
+
+The password will be the same as if you were logging onto your server normally through the desktop.
+
+Once connected, type ```lsblk``` and identify the drive. In my case, the drive is ```/dev/sdb```.
 
 
 
