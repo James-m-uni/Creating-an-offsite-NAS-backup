@@ -140,6 +140,22 @@ Return back to the command line through Ctrl+C.
 
 Type ```sudo apt install samba``` to install samba.
 
+We now need to mount the drive partitions that we created earlier. This is because samba needs a mount location so it knows what 
+folder to share over the network. For our use case on linux, we will use the ~/mnt folder.
+
+Type ```lsblk``` to identify the specific drive partition you want to share (eg. sda2,sdb1...).
+
+Once that is done we need to create a new folder in /mnt that the partition will be mounted to.
+
+Navigate to the mount folder on the command line by doing ```cd ~/mnt``` (note that on some machines you will have to put ```sudo``` at
+the beginning of the command for admin permissions.)
+
+Make a new folder in /mnt by typing ```mkdir FOLDER_NAME```. I will call mine NAME (```mkdir NAME```).
+
+We now need to create a username and password that will be used when logging onto the network share from another computer.
+
+
+
 
 
 
