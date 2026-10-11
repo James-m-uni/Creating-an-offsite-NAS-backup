@@ -150,11 +150,53 @@ Once that is done we need to create a new folder in /mnt that the partition will
 Navigate to the mount folder on the command line by doing ```cd ~/mnt``` (note that on some machines you will have to put ```sudo``` at
 the beginning of the command for admin permissions.)
 
-Make a new folder in /mnt by typing ```mkdir FOLDER_NAME```. I will call mine NAME (```mkdir NAME```).
+Make a new folder in /mnt by typing ```mkdir FOLDER_NAME```. I will call mine virtualNAS (```mkdir virtualNAS```).
+
+
 
 We now need to create a username and password that will be used when logging onto the network share from another computer.
 
+I am going to make the username ```backupNAS```.
 
+Type into the command line ```sudo useradd backupNAS``` then enter.
+
+To create a password for this new user type ```sudo passwd backupNAS``` which will then prompt you to create a new password.
+
+After creating this user we need to give it access to the folder in /mnt we created. This can be done by typing ```sudo chown -R backupNAS:backupNAS /mnt/virtualNAS```.
+
+Now we need to tell samba what partition we want to share over the network. Type ```sudo nano /etc/samba/smb.conf``` which will open the file smb.conf in the nano text editor.
+
+Samba allows for setting of a few parameters regarding the permissions of the hosted partition.
+
+Scroll to the bottom of the page in samba and enter this:  
+
+
+```
+[backupOfNAS]
+   comment = offsite backup for LAN NAS
+   path = /mnt/virtualNAS
+   browsable = yes
+   writable = yes
+   valid users = backupNAS
+   force user = backupNAS
+   read only = no
+   create mask 0770
+   directory mask = 0770
+```
+<img src="/img/samba_config.png" alt="">
+
+Most of these parameters are self-explanatory. Change these variables according to your desired setup.
+
+Once you are happy with your setup, press ctrl+o to save the config and then ctrl+x to exit the nano editor.
+
+We now need to restart samba and continue with the next step of connecting to our new server.
+
+## Connecting to the new remote NAS
+The process of connecting to the remote network storage share differs depending on what operating system you are using.
+
+#### Windows 10/11
+Open file explorer and navigate to the "This PC" tab in the sidebar. Select the three dots and press "Map network drive".
+<img src="/img/win_map_network_drive.png">
 
 
 
