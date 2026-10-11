@@ -196,7 +196,30 @@ The process of connecting to the remote network storage share differs depending 
 
 #### Windows 10/11
 Open file explorer and navigate to the "This PC" tab in the sidebar. Select the three dots and press "Map network drive".
+
 <img src="/img/win_map_network_drive.png">
+
+You will then be prompted to enter the drive letter and the folder where it is located. You can choose any letter. When
+you choose the folder location type ```\\TAILSCALE_SERVER_IP\NAME_OF_SAMBA_SHARE```. As an example, my samba share name from
+this tutorial is called ```backupOfNAS```.
+
+(If you are unsure of what your tailscale IP is, it is listed on the tailscale machines tab. The IP you are looking for is the one of the remote server.)
+
+Select ```Connect using different credentials``` as we will be connecting with the username and password created earlier in the tutorial.
+
+After pressing next, enter your newly created credentials and connect.
+
+#### MacOS
+Open finder, and in the top menu hover over "Go" until the dropdown appears. Click "Connect to server". A new window will appear.
+
+When this window appears type ```smb://TAILSCALE_SERVER_IP/NAME_OF_SAMBA_SHARE```. If you are unsure of what your tailscale server ip or
+samba share name is then follow the instructions in the <b>Windows</b> tab.
+
+#### Linux
+The setup for each linux distribution is different as the layout is different for most of them. The best way is to search up online how to connect your NAS on your specific
+Linux distribution.
+
+
 
 
 
