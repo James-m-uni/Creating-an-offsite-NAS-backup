@@ -133,6 +133,12 @@ To write these new changes to the disk, type ```w```
 
 <b>YOU MUST ENSURE THAT YOU HAVE FORMATTED THE CORRECT DRIVE BEFORE WRITING AS THIS STEP CANNOT BE UNDONE</b>
 
+We now need to add a file system for each of the partitions. The ```ext4``` file system is readable by Windows, macOS and linux so I will format it to ext4.
+
+Type ```sudo mkfs.ext4 /dev/PARTITION``` and allow it to add the file system. In my case for sdb1 (partition 1) I will enter ```sudo mkfs.ext4 /dev/sdb1```.
+
+This command must be repeated for each partition on your shared drive.
+
 ## Install and setup samba
 Samba allows linux machines to share drives and services (such as printers) over a network. We first need to install it.
 
@@ -151,6 +157,13 @@ Navigate to the mount folder on the command line by doing ```cd ~/mnt``` (note t
 the beginning of the command for admin permissions.)
 
 Make a new folder in /mnt by typing ```mkdir FOLDER_NAME```. I will call mine virtualNAS (```mkdir virtualNAS```).
+
+We need to mount the partition of the disk to this drive so that samba can access the partition. Type ```sudo mount /dev/PARTITION /mnt/virtualNAS``` replacing <b>PARTITION</b>
+and <b>virtualNAS</b> with the name of your partition (eg. sdb1) and folder you created in the step above.
+
+If using the ```mount``` command, linux will only keep the drive mounted until the next reboot. To make this mount permanent, we have to edit /etc/fstab.
+
+The UUID of the partition is needed for this part. START HERE
 
 
 
